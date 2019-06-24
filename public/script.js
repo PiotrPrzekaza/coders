@@ -3,9 +3,15 @@ const answer1 = document.querySelector('.answer1')
 const answer2 = document.querySelector('.answer2')
 const answer3 = document.querySelector('.answer3')
 const answer4 = document.querySelector('.answer4')
-
+const gameBoard = document.querySelector('.gameBoard');
+const h2 = document.querySelector('h2');
 
 function fillQestionElements(data) {
+
+    if (data.winner === true) {
+        gameBoard.style.display = 'none';
+        h2.innerText = 'WYGRAŁEŚ';
+    }
     question.innerText = data.question;
     for (const i in data.answers) {
         const answerEl = document.querySelector(`.answer${Number(i) + 1}`);
@@ -28,13 +34,20 @@ function showNextQuestion() {
 };
 showNextQuestion();
 
+const goodAnswerSpan = document.querySelector('.good-answers');
+
+function handleAnswerFeedback(data) {
+    goodAnswerSpan.innerText = data.goodAnswers;
+    showNextQuestion();
+}
+
 function sendAnswer(answerIndex) {
     fetch(`/answer/${answerIndex}`, {
         method: 'POST',
     })
         .then(r => r.json())
         .then(data => {
-            console.log(data);
+            handleAnswerFeedback(data);
         })
 }
 
