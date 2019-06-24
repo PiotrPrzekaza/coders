@@ -1,10 +1,15 @@
 const express = require('express');
+const path = require('path');
 
 const app = express();
 
 app.listen(3000, () => {
     console.log('Server is listening at http://localhost:3000');
 });
+
+app.use(express.static(
+    path.join(__dirname, 'public')
+))
 
 let goodAnswers = 0;
 let callToFrendUsed = false;
@@ -38,3 +43,18 @@ const questions = [
         correctAnswer: 2,
     }
 ]
+
+app.get('/question', (req, res) => {
+
+    if (goodAnswers === questions.length) {
+        res.json({
+            winner: true,
+        });
+    } else {
+        const nextQuestion = questions[goodAnswers];
+        const { question, answers } = nextQuestion
+        res.json({
+            question, answers,
+        })
+    }
+})
