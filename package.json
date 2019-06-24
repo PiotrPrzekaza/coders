@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/PiotrPrzekaza/coders/issues"
   },
-  "homepage": "https://github.com/PiotrPrzekaza/coders#readme"
+  "homepage": "https://github.com/PiotrPrzekaza/coders#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
