@@ -1,0 +1,19 @@
+{
+  "name": "coders",
+  "version": "1.0.0",
+  "description": "programing quiz",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PiotrPrzekaza/coders.git"
+  },
+  "author": "Piotr Przekaza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PiotrPrzekaza/coders/issues"
+  },
+  "homepage": "https://github.com/PiotrPrzekaza/coders#readme"
+}
