@@ -18,7 +18,7 @@ let fiftyFiftyUsed = false;
 
 const questions = [
     {
-        question: 'Gdzie w pamięci przechowywane są typy proste a gdzie typy referencyjne',
+        question: 'Gdzie w pamięci przechowywane są typy proste a gdzie typy referencyjne?',
         answers: ["Oba typy są przechowywane na stercie", "Typy proste na stercie, a referaencyjne na stosie", "Oba typy są przechowywane na stosie", "Typy proste na stosie, a referencyjne na stercie"],
         correctAnswer: 3,
     },
