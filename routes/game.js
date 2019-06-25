@@ -2,7 +2,7 @@ function gameRoutes(app) {
 
     let goodAnswers = 0;
     let isGameOver = false;
-    let callToFrendUsed = false;
+    let callToFriendUsed = false;
     let questionToAudianceUsed = false;
     let fiftyFiftyUsed = false;
 
