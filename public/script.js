@@ -106,4 +106,28 @@ function fiftyFifty() {
         })
 }
 
-document.querySelector('.fiftyFifty').addEventListener('click', fiftyFifty)
+document.querySelector('.fiftyFifty').addEventListener('click', fiftyFifty);
+
+
+function handleAudianceAnswer(data) {
+    if (typeof data.text === 'string') {
+        tipDiv.innerText = data.text;
+    } else {
+        data.chart.forEach((precent, index) => {
+            buttons[index].innerText = `${buttons[index].innerText}: ${precent}%`;
+        })
+    }
+}
+
+
+function questionToAudiance() {
+    fetch('/help/audiance', {
+        method: 'GET',
+    })
+        .then(r => r.json())
+        .then(data => {
+            handleAudianceAnswer(data);
+        })
+}
+
+document.querySelector('.questionToAudiance').addEventListener('click', questionToAudiance)

@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    min-height: 20vh;
+    background-color: lightskyblue;
+}
+
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 50px;
+    font-size: 36px;
+}
+
+h2 {
+    text-align: right;
+    padding: 50px;
+}
