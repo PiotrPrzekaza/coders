@@ -83,3 +83,19 @@ function callToFriend() {
 }
 
 document.querySelector('.callToFriend').addEventListener('click', callToFriend)
+
+function handleFiftyFiftyAnswer(data) {
+    console.log(data);
+}
+
+function fiftyFifty() {
+    fetch('/help/fifty', {
+        method: 'GET',
+    })
+        .then(r => r.json())
+        .then(data => {
+            handleFiftyFiftyAnswer(data);
+        })
+}
+
+document.querySelector('.fiftyFifty').addEventListener('click', fiftyFifty)

@@ -100,6 +100,24 @@ function gameRoutes(app) {
             text: doseFriendKnowAnswer ? `Hmm, wydaję mi się, że odpowiedź to ${question.answers[question.correctAnswer]}` : "Hmm, no nie wiem",
         })
     })
+
+    app.get('/help/fifty', (req, res) => {
+        if (fiftyFiftyUsed) {
+            return res.json({
+                text: "To koło ratunkowe było juz wykorzystane.",
+            });
+        }
+        fiftyFiftyUsed = true;
+        const question = questions[goodAnswers]
+        const answersCopy = question.answers.filter((s, index) => (
+            index !== question.correctAnswer
+        ));
+        answersCopy.splice(~~(Math.random() * answersCopy.length), 1);
+
+        res.json({
+            answersToRemove: answersCopy,
+        })
+    })
 }
 
 
