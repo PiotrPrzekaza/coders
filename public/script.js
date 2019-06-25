@@ -5,6 +5,7 @@ const answer3 = document.querySelector('#answer3')
 const answer4 = document.querySelector('#answer4')
 const gameBoard = document.querySelector('.gameBoard');
 const h2 = document.querySelector('h2');
+const tipDiv = document.querySelector('.tip');
 
 function fillQestionElements(data) {
 
@@ -67,13 +68,17 @@ for (const button of buttons) {
     })
 }
 
+function handleFriendAnswer(data) {
+    tipDiv.innerText = data.text;
+}
+
 function callToFriend() {
     fetch('/help/friend', {
         method: 'GET',
     })
         .then(r => r.json())
         .then(data => {
-            console.log(data);
+            handleFriendAnswer(data);
         })
 }
 
