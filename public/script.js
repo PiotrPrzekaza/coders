@@ -11,6 +11,13 @@ function fillQestionElements(data) {
     if (data.winner === true) {
         gameBoard.style.display = 'none';
         h2.innerText = 'WYGRAŁEŚ';
+        return;
+    }
+
+    if (data.loser === true) {
+        gameBoard.style.display = 'none';
+        h2.innerText = 'Nie poszło tym razem sprubój ponownie';
+        return;
     }
     question.innerText = data.question;
     for (const i in data.answers) {
