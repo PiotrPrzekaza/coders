@@ -1,8 +1,8 @@
 const question = document.querySelector('.question');
-const answer1 = document.querySelector('.answer1')
-const answer2 = document.querySelector('.answer2')
-const answer3 = document.querySelector('.answer3')
-const answer4 = document.querySelector('.answer4')
+const answer1 = document.querySelector('#answer1')
+const answer2 = document.querySelector('#answer2')
+const answer3 = document.querySelector('#answer3')
+const answer4 = document.querySelector('#answer4')
 const gameBoard = document.querySelector('.gameBoard');
 const h2 = document.querySelector('h2');
 
@@ -21,7 +21,7 @@ function fillQestionElements(data) {
     }
     question.innerText = data.question;
     for (const i in data.answers) {
-        const answerEl = document.querySelector(`.answer${Number(i) + 1}`);
+        const answerEl = document.querySelector(`#answer${Number(i) + 1}`);
         answerEl.innerText = data.answers[i];
     }
     // answer1.innerText = data.answers[0];
@@ -58,7 +58,7 @@ function sendAnswer(answerIndex) {
         })
 }
 
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.answer-btn');
 
 for (const button of buttons) {
     button.addEventListener('click', (e) => {
@@ -66,3 +66,15 @@ for (const button of buttons) {
         sendAnswer(answerIndex);
     })
 }
+
+function callToFriend() {
+    fetch('/help/friend', {
+        method: 'GET',
+    })
+        .then(r => r.json())
+        .then(data => {
+            console.log(data);
+        })
+}
+
+document.querySelector('.callToFriend').addEventListener('click', callToFriend)

@@ -85,6 +85,20 @@ function gameRoutes(app) {
         //         correct: false,
         //     })
         // }
+    });
+
+    app.get('/help/friend', (req, res) => {
+        if (callToFriendUsed) {
+            return res.json({
+                text: "To koło ratunkowe było juz wykorzystane.",
+            });
+        }
+        callToFriendUsed = true;
+        const doseFriendKnowAnswer = Math.random() < 0.8;
+        const question = questions[goodAnswers]
+        res.json({
+            text: doseFriendKnowAnswer ? `Hmm, wydaję mi się, że odpowiedź to ${question.answers[question.correctAnswer]}` : "Hmm, no nie wiem",
+        })
     })
 }
 
