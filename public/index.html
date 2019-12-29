@@ -1,32 +1,23 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Koderzy</title>
+    <title>Strona Główna</title>
 </head>
 
 <body>
-    <nav>
-        <h1>Koderzy</h1>
-        <h2>Poprawne odpowiedzi: <span class="good-answers">0</span></h2>
-    </nav>
-    <main class="gameBoard">
-        <div class="tip"></div>
+    <form action="">
+        Imię: <br />
+        <input type="text" id="nameInput" /><br /> Nazwisko: <br />
+        <input type="text" id="surnameInput" /><br />
+        <button type="submit">Wygeneruj odnośnik</button>
+    </form>
+    <a href="">Jestem odnośnikiem!</a>
 
-        <button class="callToFriend">Tel. do Przyjaciela</button>
-        <button class="fiftyFifty">Pół na Pół</button>
-        <button class="questionToAudiance">pytanie do Publiczności</button>
-
-        <div class="question"></div>
-        <button class="answer-btn" id="answer1" data-answer="0"></button>
-        <button class="answer-btn" id="answer2" data-answer="1"></button>
-        <button class="answer-btn" id="answer3" data-answer="2"></button>
-        <button class="answer-btn" id="answer4" data-answer="3"></button>
-    </main>
+    <img src="/name.png" />
     <script src="script.js"></script>
 </body>
 

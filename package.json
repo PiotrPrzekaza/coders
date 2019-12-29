@@ -1,22 +1,15 @@
 {
-  "name": "coders",
+  "name": "expressjs",
   "version": "1.0.0",
-  "description": "programing quiz",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PiotrPrzekaza/coders.git"
-  },
   "author": "Piotr Przekaza",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/PiotrPrzekaza/coders/issues"
-  },
-  "homepage": "https://github.com/PiotrPrzekaza/coders#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.4",
     "express": "^4.17.1"
   }
 }

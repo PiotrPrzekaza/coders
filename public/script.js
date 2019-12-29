@@ -1,133 +1,21 @@
-const question = document.querySelector('.question');
-const answer1 = document.querySelector('#answer1')
-const answer2 = document.querySelector('#answer2')
-const answer3 = document.querySelector('#answer3')
-const answer4 = document.querySelector('#answer4')
-const gameBoard = document.querySelector('.gameBoard');
-const h2 = document.querySelector('h2');
-const tipDiv = document.querySelector('.tip');
+const nameInput = document.querySelector("#nameInput");
+const surnameInput = document.querySelector("#surnameInput");
+const form = document.querySelector("form");
+const a = document.querySelector("a");
 
-function fillQestionElements(data) {
+const name = "Jakaś Osoba";
+const surname = "Testowa";
 
-    if (data.winner === true) {
-        gameBoard.style.display = 'none';
-        h2.innerText = 'WYGRAŁEŚ';
-        return;
-    }
+form.addEventListener("submit", event => {
+    event.preventDefault();
 
-    if (data.loser === true) {
-        gameBoard.style.display = 'none';
-        h2.innerText = 'Nie poszło tym razem sprubój ponownie';
-        return;
-    }
-    question.innerText = data.question;
-    for (const i in data.answers) {
-        const answerEl = document.querySelector(`#answer${Number(i) + 1}`);
-        answerEl.innerText = data.answers[i];
-    }
-    // answer1.innerText = data.answers[0];
-    // answer2.innerText = data.answers[1];
-    // answer3.innerText = data.answers[2];
-    // answer4.innerText = data.answers[3];
-};
+    const name = nameInput.value;
+    const surname = surnameInput.value;
 
-function showNextQuestion() {
-    fetch('/question', {
-        method: 'GET',
-    })
-        .then(r => r.json())
-        .then(data => {
-            fillQestionElements(data);
-        })
-};
-showNextQuestion();
-
-const goodAnswerSpan = document.querySelector('.good-answers');
-
-function handleAnswerFeedback(data) {
-    goodAnswerSpan.innerText = data.goodAnswers;
-    showNextQuestion();
-}
-
-function sendAnswer(answerIndex) {
-    fetch(`/answer/${answerIndex}`, {
-        method: 'POST',
-    })
-        .then(r => r.json())
-        .then(data => {
-            handleAnswerFeedback(data);
-        })
-}
-
-const buttons = document.querySelectorAll('.answer-btn');
-
-for (const button of buttons) {
-    button.addEventListener('click', (e) => {
-        const answerIndex = e.target.dataset.answer;
-        sendAnswer(answerIndex);
-    })
-}
-
-function handleFriendAnswer(data) {
-    tipDiv.innerText = data.text;
-}
-
-function callToFriend() {
-    fetch('/help/friend', {
-        method: 'GET',
-    })
-        .then(r => r.json())
-        .then(data => {
-            handleFriendAnswer(data);
-        })
-}
-
-document.querySelector('.callToFriend').addEventListener('click', callToFriend)
-
-function handleFiftyFiftyAnswer(data) {
-    if (typeof data.text === 'string') {
-        tipDiv.innerText = data.text;
-    } else {
-        for (const button of buttons) {
-            if (data.answersToRemove.indexOf(button.innerText) > -1) {
-                button.innerText = ''
-            }
-        }
-    }
-}
-
-function fiftyFifty() {
-    fetch('/help/fifty', {
-        method: 'GET',
-    })
-        .then(r => r.json())
-        .then(data => {
-            handleFiftyFiftyAnswer(data);
-        })
-}
-
-document.querySelector('.fiftyFifty').addEventListener('click', fiftyFifty);
-
-
-function handleAudianceAnswer(data) {
-    if (typeof data.text === 'string') {
-        tipDiv.innerText = data.text;
-    } else {
-        data.chart.forEach((precent, index) => {
-            buttons[index].innerText = `${buttons[index].innerText}: ${precent}%`;
-        })
-    }
-}
-
-
-function questionToAudiance() {
-    fetch('/help/audiance', {
-        method: 'GET',
-    })
-        .then(r => r.json())
-        .then(data => {
-            handleAudianceAnswer(data);
-        })
-}
-
-document.querySelector('.questionToAudiance').addEventListener('click', questionToAudiance)
+    const params = new URLSearchParams({
+        name,
+        surname,
+    });
+    const url = `http;//localhost:3000/?` + params;
+    a.setAttribute('href', url);
+});
